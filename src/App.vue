@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import CurrencyConverter from './components/CurrencyConverter.vue';
+import CurrencyConverter from "./components/CurrencyConverter.vue";
 
 export default {
   name: "app",

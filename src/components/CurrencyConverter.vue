@@ -1,40 +1,44 @@
 <template>
-  
+  <div>
+    <input type="number" name="USD" id="USD">
+    <input type="number" name="USDDOP" id="USDDOP">
+  </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-  name: 'CurrencyConverter',
-  data () {
+  name: "CurrencyConverter",
+  data() {
     return {
-      exchange: '',
+      exchange: "",
+      USDDOP: "",
       loading: true,
       error: false
-    }
+    };
   },
-  created () {
+  created() {
     this.getRecentExchange();
   },
   methods: {
-    getRecentExchange () {
+    getRecentExchange() {
       const apiKey = process.env.VUE_APP_CURRENCY_API_KEY;
       const endpoint = `http://www.apilayer.net/api/live?access_key=${apiKey}&currencies=DOP`;
 
-      axios.get(endpoint)
-        .then(response => this.exchange = response.data)
-        .catch(error => {
-          console.log(error);
-          this.error = true;
+      axios
+        .get(endpoint)
+        .then(response => {
+          if (!response.data.success) this.error = true;
+          this.exchange = response.data;
+          this.USDDOP = response.data.quotes.USDDOP;
         })
-        .finally(() => this.loading = false);
+        .catch(() => (this.error = true))
+        .finally(() => (this.loading = false));
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>
-
