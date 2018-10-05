@@ -10,7 +10,8 @@ export default {
   data () {
     return {
       exchange: '',
-      error: ''
+      loading: true,
+      error: false
     }
   },
   created () {
@@ -22,9 +23,12 @@ export default {
       const endpoint = `http://www.apilayer.net/api/live?access_key=${apiKey}&currencies=DOP`;
 
       axios.get(endpoint)
-        .then(response => (this.exchange = response.data))
-        .catch(error => console.log(error))
-        .then(response => console.log(response));
+        .then(response => this.exchange = response.data)
+        .catch(error => {
+          console.log(error);
+          this.error = true;
+        })
+        .finally(() => this.loading = false);
     }
   }
 }
