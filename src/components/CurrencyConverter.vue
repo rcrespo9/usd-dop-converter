@@ -1,7 +1,12 @@
 <template>
   <div>
-    <input type="number" name="USD" id="USD">
-    <input type="number" name="USDDOP" id="USDDOP">
+    <label>USD
+      <input type="number" name="USD" v-model.number="USD.converted">
+    </label>
+
+    <label>USDDOP
+      <input type="number" name="USDDOP" v-model.number="USDDOP.converted">
+    </label>
   </div>
 </template>
 
@@ -13,13 +18,34 @@ export default {
   data() {
     return {
       exchange: "",
-      USDDOP: "",
+      USD: {
+        base: 1,
+        converted: 1
+      },
+      USDDOP: {
+        base: 48.96,
+        converted: 48.96
+      },
       loading: true,
       error: false
     };
   },
   created() {
-    this.getRecentExchange();
+    // this.getRecentExchange();
+  },
+  watch: {
+    USD: {
+      handler(newVal) {
+        this.updateUSDDOP(newVal.converted);
+      },
+      deep: true
+    },
+    USDDOP: {
+      handler(newVal) {
+        this.updateUSD(newVal.converted);
+      },
+      deep: true
+    }
   },
   methods: {
     getRecentExchange() {
@@ -35,6 +61,16 @@ export default {
         })
         .catch(() => (this.error = true))
         .finally(() => (this.loading = false));
+    },
+    updateUSD(newVal) {
+      const { base } = this.USDDOP;
+      const convertedVal = newVal / base;
+      this.USD.converted = convertedVal;
+    },
+    updateUSDDOP(newVal) {
+      const { base } = this.USDDOP;
+      const convertedVal = newVal * base;
+      this.USDDOP.converted = convertedVal;
     }
   }
 };
