@@ -1,11 +1,11 @@
 <template>
   <div>
     <label>USD
-      <input type="number" name="USD" v-model.number="USD.converted">
+      <input type="number" name="USD" :placeholder="USD.base" v-model.number="USD.converted" min="1">
     </label>
 
     <label>USDDOP
-      <input type="number" name="USDDOP" v-model.number="USDDOP.converted">
+      <input type="number" name="USDDOP" :placeholder="USDDOP.base" v-model.number="USDDOP.converted" min="1">
     </label>
   </div>
 </template>
@@ -21,11 +21,11 @@ export default {
       exchange: "",
       USD: {
         base: 1,
-        converted: 1
+        converted: ""
       },
       USDDOP: {
         base: 48.96,
-        converted: 48.96
+        converted: ""
       },
       loading: true,
       error: false
@@ -37,13 +37,19 @@ export default {
   watch: {
     USD: {
       handler(newVal) {
-        this.updateUSDDOP(newVal.converted);
+        const { converted } = newVal;
+        const convertedVal = this.convertUSDDOP(converted);
+
+        this.USDDOP.converted = parseFloat(convertedVal) || "";
       },
       deep: true
     },
     USDDOP: {
       handler(newVal) {
-        this.updateUSD(newVal.converted);
+        const { converted } = newVal;
+        const convertedVal = this.convertUSD(converted);
+
+        this.USD.converted = parseFloat(convertedVal) || "";
       },
       deep: true
     }
@@ -63,15 +69,22 @@ export default {
         .catch(() => (this.error = true))
         .finally(() => (this.loading = false));
     },
-    updateUSD(newVal) {
+    convertUSD(newVal) {
       const { base } = this.USDDOP;
       const convertedVal = newVal / base;
-      this.USD.converted = convertedVal;
+      const formattedVal = this.formatCurrency(convertedVal);
+
+      return formattedVal;
     },
-    updateUSDDOP(newVal) {
+    convertUSDDOP(newVal) {
       const { base } = this.USDDOP;
       const convertedVal = newVal * base;
-      this.USDDOP.converted = convertedVal;
+      const formattedVal = this.formatCurrency(convertedVal);
+
+      return formattedVal;
+    },
+    formatCurrency(val) {
+      return parseFloat(val).toFixed(2);
     }
   }
 };
