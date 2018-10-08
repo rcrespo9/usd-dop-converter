@@ -1,30 +1,39 @@
 <template>
   <div>
-    <label>USD
-      <input type="number" name="USD" :placeholder="USD.base" :value="USD.converted" @input="updateExchange">
-    </label>
-
-    <label>USDDOP
-      <input type="number" name="USDDOP" :placeholder="USDDOP.base" :value="USDDOP.converted" @input="updateExchange">
-    </label>
+    <Input
+      name="USD"
+      :placeholder="USD.base"
+      :value="USD.converted"
+      :input-evt="updateExchange"
+    />
+    <Input
+      name="USDDOP"
+      :placeholder="USDDOP.base"
+      :value="USDDOP.converted"
+      :input-evt="updateExchange"
+    />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import Input from "./CurrencyConverterInput";
 
 export default {
   name: "CurrencyConverter",
+  components: {
+    Input
+  },
   data() {
     return {
       exchange: "",
       USD: {
         base: 1,
-        converted: ""
+        converted: 0
       },
       USDDOP: {
         base: 48.96,
-        converted: ""
+        converted: 0
       },
       loading: true,
       error: false
