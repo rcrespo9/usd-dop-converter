@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'CurrencyConverterInput',
+  name: "CurrencyConverterInput",
   props: {
     name: {
       type: String,
@@ -23,12 +23,11 @@ export default {
   },
   methods: {
     updateExchange() {
-      this.$emit('input', event);
+      this.$emit("input", event);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>
