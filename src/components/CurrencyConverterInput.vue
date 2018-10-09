@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'CurrencyConvertInput',
+  name: 'CurrencyConverterInput',
   props: {
     name: {
       type: String,
