@@ -1,27 +1,31 @@
 <template>
   <div>
-    <Input
-      name="USD"
-      :placeholder="USD.base"
-      :value="USD.converted"
-      v-on:input="updateExchange"
-    />
-    <Input
-      name="USDDOP"
-      :placeholder="USDDOP.base"
-      :value=USDDOP.converted
-      v-on:input="updateExchange"
-    />
+    <input-group>
+      <Input
+        name="USD"
+        :placeholder="USD.base"
+        :value="USD.converted"
+        v-on:input="updateExchange"
+      />
+      <Input
+        name="DOP"
+        :placeholder="USDDOP.base"
+        :value=USDDOP.converted
+        v-on:input="updateExchange"
+      />
+    </input-group>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import InputGroup from "./CurrencyConverterInputGroup";
 import Input from "./CurrencyConverterInput";
 
 export default {
   name: "CurrencyConverter",
   components: {
+    InputGroup,
     Input
   },
   data() {
@@ -69,7 +73,7 @@ export default {
 
         this.USD.converted = value;
         this.USDDOP.converted = formattedVal > 1 ? formattedVal : "";
-      } else if (name === "USDDOP") {
+      } else if (name === "DOP") {
         convertedVal = value / base;
         formattedVal = this.formatCurrency(convertedVal);
 

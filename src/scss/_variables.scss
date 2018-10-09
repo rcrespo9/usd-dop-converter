@@ -1,1 +1,26 @@
 @import '~modularscale-sass';
+
+/*------------------------------------*\
+  #TYPOGRAPHY VARIABLES
+\*------------------------------------*/
+
+@import '~modularscale-sass';
+
+$modularscale: (
+  base: 1rem,
+  ratio: $fourth
+);
+
+$font-weight: (
+  regular: 400,
+  medium: 500,
+  semi-bold: 600,
+  bold: 700,
+  heavy: 800
+);
+
+/*------------------------------------*\
+  #GLOBAL VARIABLES
+\*------------------------------------*/
+
+$global-gutter: ms(0);
