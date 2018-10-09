@@ -1,6 +1,6 @@
 <template>
   <label>{{name}}
-    <input type="number" :name="name" :placeholder="placeholder" :value="value" @input="inputEvt">
+    <input type="number" :name="name" :placeholder="placeholder" :value="value" @input="updateExchange" min="0">
   </label>  
 </template>
 
@@ -8,10 +8,23 @@
 export default {
   name: 'CurrencyConvertInput',
   props: {
-    name: String,
-    placeholder: Number,
-    value: Number,
-    inputEvt: Function
+    name: {
+      type: String,
+      required: true
+    },
+    placeholder: {
+      type: Number,
+      required: true
+    },
+    value: {
+      type: String,
+      required: true
+    }
+  },
+  methods: {
+    updateExchange() {
+      this.$emit('input', event);
+    }
   }
 }
 </script>

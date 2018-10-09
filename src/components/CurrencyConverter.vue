@@ -4,13 +4,13 @@
       name="USD"
       :placeholder="USD.base"
       :value="USD.converted"
-      :input-evt="updateExchange"
+      v-on:input="updateExchange"
     />
     <Input
       name="USDDOP"
       :placeholder="USDDOP.base"
-      :value="USDDOP.converted"
-      :input-evt="updateExchange"
+      :value=USDDOP.converted
+      v-on:input="updateExchange"
     />
   </div>
 </template>
@@ -29,11 +29,11 @@ export default {
       exchange: "",
       USD: {
         base: 1,
-        converted: 0
+        converted: ""
       },
       USDDOP: {
         base: 48.96,
-        converted: 0
+        converted: ""
       },
       loading: true,
       error: false
@@ -59,22 +59,22 @@ export default {
     },
     updateExchange(e) {
       const { base } = this.USDDOP;
-      const { name, valueAsNumber } = e.target;
+      const { name, value } = e.target;
       let convertedVal;
       let formattedVal;
 
       if (name === "USD") {
-        convertedVal = valueAsNumber * base;
+        convertedVal = value * base;
         formattedVal = this.formatCurrency(convertedVal);
 
-        this.USD.converted = valueAsNumber;
-        this.USDDOP.converted = formattedVal;
+        this.USD.converted = value;
+        this.USDDOP.converted = formattedVal > 1 ? formattedVal : "";
       } else if (name === "USDDOP") {
-        convertedVal = valueAsNumber / base;
+        convertedVal = value / base;
         formattedVal = this.formatCurrency(convertedVal);
 
-        this.USDDOP.converted = valueAsNumber;
-        this.USD.converted = formattedVal;
+        this.USDDOP.converted = value;
+        this.USD.converted = formattedVal > 1 ? formattedVal : "";
       }
     },
     formatCurrency(val) {
