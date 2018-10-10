@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 .currency-input {
-  padding: ms(2) 0;
+  padding: ms(3) 0;
 }
 
 .currency-input__label,
@@ -75,6 +75,11 @@ input {
   padding: 0;
   border: none;
   background-color: transparent;
+  color: $white;
   font-size: ms(4);
+}
+
+::placeholder {
+  color: rgba($white, .4);
 }
 </style>

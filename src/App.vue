@@ -31,6 +31,9 @@ html {
 }
 
 body {
+  color: $white;
+  background-image: linear-gradient(to top, #434343, #000000);
+  background-repeat: no-repeat;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-font-smoothing: antialiased;
@@ -39,6 +42,7 @@ body {
 
 .site-container {
   max-width: ms(12);
+  height: 100vh;
   margin: 0 auto;
   padding: 0 $global-gutter;
 }
