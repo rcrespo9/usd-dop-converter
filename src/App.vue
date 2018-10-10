@@ -32,7 +32,7 @@ html {
 
 body {
   color: $white;
-  background-image: linear-gradient(to top, #434343, #000000);
+  background-image: linear-gradient(to right, #141e30, #243b55);
   background-repeat: no-repeat;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

@@ -80,6 +80,6 @@ input {
 }
 
 ::placeholder {
-  color: rgba($white, .4);
+  color: rgba($white, .3);
 }
 </style>
