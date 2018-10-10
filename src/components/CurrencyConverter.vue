@@ -5,12 +5,16 @@
         name="USD"
         :placeholder="USD.base"
         :value="USD.converted"
+        country="United States of America"
+        flag="us.svg"
         v-on:input="updateExchange"
       />
       <Input
         name="DOP"
         :placeholder="USDDOP.base"
         :value=USDDOP.converted
+        country="Dominican Republic"
+        flag="do.svg"
         v-on:input="updateExchange"
       />
     </input-group>

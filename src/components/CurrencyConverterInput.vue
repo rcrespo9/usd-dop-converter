@@ -1,7 +1,10 @@
 <template>
   <div class="currency-input">
     <label>
-      <span class="currency-input__label">{{name}}</span>
+      <span class="currency-input__label">
+        <img :src="require(`@/assets/${flag}`)" :alt="`${country} flag`" class="label__img">
+        <span class="label__name">{{name}}</span>
+      </span>
       <input type="number" :name="name" :placeholder="placeholder" :value="value" @input="updateExchange" min="1">
     </label>
   </div> 
@@ -20,6 +23,14 @@ export default {
       required: true
     },
     value: {
+      type: String,
+      required: true
+    },
+    country: {
+      type: String,
+      required: true
+    },
+    flag: {
       type: String,
       required: true
     }
@@ -43,11 +54,21 @@ input {
 }
 
 .currency-input__label {
-  margin-bottom: ms(0);
+  display: grid;
+  grid-template-columns: ms(0) 1fr;
+  grid-gap: ms(-3);
+  align-items: center;
+  margin-bottom: ms(-1);
   font-size: ms(0);
   font-weight: map-get($font-weight, medium);
   letter-spacing: ms(-13);
   text-transform: uppercase;
+}
+
+.label__img {
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
 }
 
 input {
