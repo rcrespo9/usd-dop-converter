@@ -55,7 +55,7 @@ input {
 
 .currency-input__label {
   display: grid;
-  grid-template-columns: ms(0) 1fr;
+  grid-template-columns: ms(1) 1fr;
   grid-gap: ms(-3);
   align-items: center;
   margin-bottom: ms(-1);
