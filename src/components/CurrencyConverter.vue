@@ -103,9 +103,8 @@ export default {
 <style lang="scss" scoped>
   h1 {
     margin-top: 0;
-    margin-bottom: ms(-5);
+    margin-bottom: ms(-1);
     font-size: ms(3);
     font-weight: map-get($font-weight, semi-bold);
-    text-align: center;
   }
 </style>
