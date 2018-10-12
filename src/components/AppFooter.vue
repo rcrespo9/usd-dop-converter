@@ -1,12 +1,18 @@
 <template>
   <footer>
-    <small>Built by <a href="https://rudycrespo.com">Rudy Crespo</a></small>
+    <small>&copy; {{getYear}} <a href="https://rudycrespo.com">Rudy Crespo</a></small>
   </footer>
 </template>
 
 <script>
 export default {
-  name: 'AppFooter'
+  name: 'AppFooter',
+  computed: {
+    getYear() {
+      const date = new Date();
+      return date.getFullYear();
+    }
+  }
 }
 </script>
 
@@ -21,6 +27,8 @@ small {
 
 a {
   color: inherit;
+  font-weight: map-get($font-weight, semi-bold);
+  text-decoration: none;
 }
 </style>
 
