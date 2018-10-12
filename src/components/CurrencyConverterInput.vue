@@ -56,7 +56,7 @@ input {
 .currency-input__label {
   display: grid;
   grid-template-columns: ms(1) 1fr;
-  grid-gap: ms(-3);
+  grid-gap: ms(-2);
   align-items: center;
   margin-bottom: ms(-1);
   font-size: ms(0);
@@ -72,6 +72,7 @@ input {
 }
 
 input {
+  width: 100%;
   padding: 0;
   border: none;
   background-color: transparent;
@@ -80,6 +81,6 @@ input {
 }
 
 ::placeholder {
-  color: rgba($white, .3);
+  color: rgba($white, 0.3);
 }
 </style>

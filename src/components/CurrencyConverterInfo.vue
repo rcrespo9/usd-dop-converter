@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'CurrencyConverterInfo',
+  name: "CurrencyConverterInfo",
   props: {
     date: {
       type: String,
@@ -19,5 +19,5 @@ export default {
       required: true
     }
   }
-}
+};
 </script>

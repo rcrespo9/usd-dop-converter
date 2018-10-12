@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .currency-input:first-of-type {
-    border-bottom: 2px solid rgba($white, .5);
-  }
+.currency-input:first-of-type {
+  border-bottom: 2px solid rgba($white, 0.5);
+}
 </style>
