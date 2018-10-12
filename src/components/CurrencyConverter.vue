@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <article>
+    <h1>USD to DOP</h1>
     <input-group>
       <Input
         name="USD"
@@ -18,19 +19,26 @@
         v-on:input="updateExchange"
       />
     </input-group>
-  </div>
+    <Info
+      date="10/12/18"
+      convertFrom="1 USD"
+      :convertTo="`${USDDOP.base} DOP`"
+    />
+  </article>
 </template>
 
 <script>
 import axios from "axios";
 import InputGroup from "./CurrencyConverterInputGroup";
 import Input from "./CurrencyConverterInput";
+import Info from "./CurrencyConverterInfo";
 
 export default {
   name: "CurrencyConverter",
   components: {
     InputGroup,
-    Input
+    Input,
+    Info
   },
   data() {
     return {
@@ -93,4 +101,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  h1 {
+    margin-top: 0;
+    margin-bottom: ms(-5);
+    font-size: ms(3);
+    font-weight: map-get($font-weight, semi-bold);
+    text-align: center;
+  }
 </style>
