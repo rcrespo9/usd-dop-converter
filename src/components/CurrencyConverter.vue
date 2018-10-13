@@ -20,7 +20,7 @@
       />
     </input-group>
     <Info
-      date="10/12/18"
+      :date="lastUpdated"
       convertFrom="1 USD"
       :convertTo="`${formattedUSDDOP} DOP`"
     />
@@ -29,6 +29,7 @@
 
 <script>
 import axios from "axios";
+import { format, parse } from 'date-fns';
 import InputGroup from "./CurrencyConverterInputGroup";
 import Input from "./CurrencyConverterInput";
 import Info from "./CurrencyConverterInfo";
@@ -71,7 +72,6 @@ export default {
       axios
         .get(endpoint)
         .then(response => {
-          console.log(response.data);
           const {
             success,
             timestamp,
@@ -79,7 +79,7 @@ export default {
           } = response.data;
           if (!success) this.error = true;
           this.USDDOP.base = USDDOP;
-          this.lastUpdated = timestamp;
+          this.lastUpdated = format(new Date(timestamp * 1000), 'MM/DD/YYYY');
         })
         .catch(() => (this.error = true))
         .finally(() => (this.loading = false));
