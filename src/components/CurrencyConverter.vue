@@ -20,7 +20,6 @@
       />
     </input-group>
     <Info
-      :date="lastUpdated"
       convertFrom="1 USD"
       :convertTo="`${formattedUSDDOP} DOP`"
     />
@@ -29,7 +28,6 @@
 
 <script>
 import axios from "axios";
-import { format } from "date-fns";
 import InputGroup from "./CurrencyConverterInputGroup";
 import Input from "./CurrencyConverterInput";
 import Info from "./CurrencyConverterInfo";
@@ -66,20 +64,14 @@ export default {
   },
   methods: {
     getRecentExchange() {
-      const apiKey = process.env.VUE_APP_CURRENCY_API_KEY;
-      const endpoint = `http://www.apilayer.net/api/live?access_key=${apiKey}&currencies=DOP`;
+      const endpoint =
+        "https://free.currencyconverterapi.com/api/v6/convert?q=USD_DOP&compact=ultra";
 
       axios
         .get(endpoint)
         .then(response => {
-          const {
-            success,
-            timestamp,
-            quotes: { USDDOP }
-          } = response.data;
-          if (!success) this.error = true;
-          this.USDDOP.base = USDDOP;
-          this.lastUpdated = format(new Date(timestamp * 1000), "MM/DD/YYYY");
+          const { USD_DOP } = response.data;
+          this.USDDOP.base = USD_DOP;
         })
         .catch(() => (this.error = true))
         .finally(() => (this.loading = false));

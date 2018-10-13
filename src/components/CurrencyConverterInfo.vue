@@ -1,6 +1,5 @@
 <template>
   <footer>
-    <small>Last Updated: {{date}}</small>
     <small>{{convertFrom}} = {{convertTo}}</small>
   </footer>
 </template>
@@ -9,10 +8,6 @@
 export default {
   name: "CurrencyConverterInfo",
   props: {
-    date: {
-      type: String,
-      required: true
-    },
     convertFrom: {
       type: String,
       required: true
@@ -27,8 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 footer {
-  display: flex;
-  justify-content: space-between;
+  text-align: right;
 }
 
 small {
