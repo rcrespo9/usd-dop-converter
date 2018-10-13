@@ -12,8 +12,8 @@
       />
       <Input
         name="DOP"
-        :placeholder="this.formatCurrency(USDDOP.base)"
-        :value=USDDOP.converted
+        :placeholder="formattedUSDDOP"
+        :value="USDDOP.converted"
         country="Dominican Republic"
         flag="do.svg"
         v-on:input="updateExchange"
@@ -22,7 +22,7 @@
     <Info
       date="10/12/18"
       convertFrom="1 USD"
-      :convertTo="`${this.formatCurrency(USDDOP.base)} DOP`"
+      :convertTo="`${formattedUSDDOP} DOP`"
     />
   </article>
 </template>
@@ -50,12 +50,18 @@ export default {
         base: 0,
         converted: ""
       },
+      lastUpdated: "",
       loading: true,
       error: false
     };
   },
   created() {
     this.getRecentExchange();
+  },
+  computed: {
+    formattedUSDDOP() {
+      return this.formatCurrency(this.USDDOP.base);
+    }
   },
   methods: {
     getRecentExchange() {
@@ -65,12 +71,15 @@ export default {
       axios
         .get(endpoint)
         .then(response => {
+          console.log(response.data);
           const {
             success,
+            timestamp,
             quotes: { USDDOP }
           } = response.data;
           if (!success) this.error = true;
           this.USDDOP.base = USDDOP;
+          this.lastUpdated = timestamp;
         })
         .catch(() => (this.error = true))
         .finally(() => (this.loading = false));
