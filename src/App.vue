@@ -36,6 +36,10 @@ html {
   @include media-query($xs-screen) {
     font-size: 20px;
   }
+
+  @include media-query($xl-screen) {
+    font-size: 1.333vw;
+  }
 }
 
 body {
