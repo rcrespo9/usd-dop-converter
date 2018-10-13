@@ -22,7 +22,7 @@
     <Info
       date="10/12/18"
       convertFrom="1 USD"
-      :convertTo="`${USDDOP.base} DOP`"
+      :convertTo="`${this.formatCurrency(USDDOP.base)} DOP`"
     />
   </article>
 </template>
