@@ -19,7 +19,7 @@ export default {
       required: true
     },
     placeholder: {
-      type: Number,
+      type: [Number, String],
       required: true
     },
     value: {

@@ -12,7 +12,7 @@
       />
       <Input
         name="DOP"
-        :placeholder="USDDOP.base"
+        :placeholder="this.formatCurrency(USDDOP.base)"
         :value=USDDOP.converted
         country="Dominican Republic"
         flag="do.svg"
@@ -42,13 +42,12 @@ export default {
   },
   data() {
     return {
-      exchange: "",
       USD: {
         base: 1,
         converted: ""
       },
       USDDOP: {
-        base: 48.96,
+        base: 0,
         converted: ""
       },
       loading: true,
@@ -56,7 +55,7 @@ export default {
     };
   },
   created() {
-    // this.getRecentExchange();
+    this.getRecentExchange();
   },
   methods: {
     getRecentExchange() {
@@ -66,9 +65,12 @@ export default {
       axios
         .get(endpoint)
         .then(response => {
-          if (!response.data.success) this.error = true;
-          this.exchange = response.data;
-          this.USDDOP = response.data.quotes.USDDOP;
+          const {
+            success,
+            quotes: { USDDOP }
+          } = response.data;
+          if (!success) this.error = true;
+          this.USDDOP.base = USDDOP;
         })
         .catch(() => (this.error = true))
         .finally(() => (this.loading = false));
@@ -101,18 +103,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  h1 {
-    margin: 0;
-    font-size: ms(3);
-    font-weight: map-get($font-weight, medium);
+h1 {
+  margin: 0;
+  font-size: ms(3);
+  font-weight: map-get($font-weight, medium);
 
-    &:after {
-      content: "";
-      display: block;
-      margin: ms(1) 0 ms(-3);
-      width: ms(4);
-      height: ms(-5);
-      background-color: #ad1457;
-    }
+  &:after {
+    content: "";
+    display: block;
+    margin: ms(1) 0 ms(-3);
+    width: ms(4);
+    height: ms(-5);
+    background-color: $pink;
   }
+}
 </style>

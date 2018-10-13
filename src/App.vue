@@ -11,7 +11,7 @@
 
 <script>
 import CurrencyConverter from "./components/CurrencyConverter.vue";
-import Footer from './components/AppFooter.vue';
+import Footer from "./components/AppFooter.vue";
 
 export default {
   name: "app",
@@ -57,7 +57,7 @@ a:hover {
 
 .site-container {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   max-width: ms(12);
   min-height: 100vh;
   margin: 0 auto;

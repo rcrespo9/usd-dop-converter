@@ -1,19 +1,19 @@
 <template>
   <footer>
-    <small>&copy; {{getYear}} <a href="https://rudycrespo.com">Rudy Crespo</a></small>
+    <small>&copy; {{getYear}} <a href="https://rudycrespo.com" target="_blank">Rudy Crespo</a></small>
   </footer>
 </template>
 
 <script>
 export default {
-  name: 'AppFooter',
+  name: "AppFooter",
   computed: {
     getYear() {
       const date = new Date();
       return date.getFullYear();
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -31,5 +31,3 @@ a {
   text-decoration: none;
 }
 </style>
-
-
