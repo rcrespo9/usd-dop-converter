@@ -16,6 +16,6 @@ export default {
 // }
 
 .currency-input:first-of-type {
-  border-bottom: 2px solid rgba($white, 0.5);
+  border-bottom: 2px solid rgba($gray, 0.5);
 }
 </style>

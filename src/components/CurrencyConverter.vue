@@ -1,6 +1,6 @@
 <template>
   <article>
-    <h1>USD to DOP</h1>
+    <h1>USD to DOP Currency Exchange</h1>
     <input-group>
       <Input
         name="USD"
@@ -102,9 +102,17 @@ export default {
 
 <style lang="scss" scoped>
   h1 {
-    margin-top: 0;
-    margin-bottom: ms(-1);
+    margin: 0;
     font-size: ms(3);
-    font-weight: map-get($font-weight, semi-bold);
+    font-weight: map-get($font-weight, medium);
+
+    &:after {
+      content: "";
+      display: block;
+      margin: ms(1) 0 ms(-3);
+      width: ms(4);
+      height: ms(-5);
+      background-color: #ad1457;
+    }
   }
 </style>

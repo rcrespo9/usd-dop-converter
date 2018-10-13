@@ -30,17 +30,29 @@ export default {
 }
 
 html {
-  font-size: 20px;
+  font-size: 18px;
+  line-height: 1.333;
+
+  @include media-query($xs-screen) {
+    font-size: 20px;
+  }
 }
 
 body {
-  color: $white;
-  background-image: linear-gradient(to top, #141e30, #243b55);
-  background-repeat: no-repeat;
+  color: $black;
+  background-color: $white;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+small {
+  color: $gray;
+}
+
+a:hover {
+  color: darken($gray, 20);
 }
 
 .site-container {
@@ -54,6 +66,6 @@ body {
 
 .site-content {
   flex: 1;
-  padding-top: ms(6);
+  padding-top: ms(3);
 }
 </style>

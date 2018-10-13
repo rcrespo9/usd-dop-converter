@@ -76,11 +76,10 @@ input {
   padding: 0;
   border: none;
   background-color: transparent;
-  color: $white;
   font-size: ms(4);
 }
 
 ::placeholder {
-  color: rgba($white, 0.3);
+  color: rgba($gray, 0.5);
 }
 </style>
