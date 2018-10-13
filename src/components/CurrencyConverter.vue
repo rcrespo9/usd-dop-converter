@@ -49,7 +49,6 @@ export default {
         base: 0,
         converted: ""
       },
-      lastUpdated: "",
       loading: true,
       error: false
     };
