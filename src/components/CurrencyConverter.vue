@@ -63,8 +63,9 @@ export default {
   },
   methods: {
     getRecentExchange() {
-      const endpoint =
-        "https://free.currencyconverterapi.com/api/v6/convert?q=USD_DOP&compact=ultra";
+      const endpoint = `https://free.currencyconverterapi.com/api/v6/convert?q=USD_DOP&compact=ultra&apiKey=${
+        process.env.VUE_APP_CURRENCY_API_KEY
+      }`;
 
       axios
         .get(endpoint)
